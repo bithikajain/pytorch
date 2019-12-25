@@ -900,6 +900,19 @@ class Module(object):
         for elem in gen:
             yield elem
 
+    def number_of_parameters(self):
+		r"""
+		BITHIKA: TODO
+		"""
+        params = list(self.parameters())
+        num_of_params = 0
+        for p in params:
+            num_layer_params = 1
+            for l in p.size():
+                num_layer_params *= l
+            num_of_params += num_layer_params
+        return num_of_params
+
     def buffers(self, recurse=True):
         r"""Returns an iterator over module buffers.
 
